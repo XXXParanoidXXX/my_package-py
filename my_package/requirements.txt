@@ -1,0 +1,101 @@
+# requirements.txt
+
+1. Estrutura do Projeto
+
+O projeto será organizado da seguinte forma:
+my_package/
+│
+├── my_package/
+│   ├── __init__.py
+│   └── module.py
+│
+├── tests/
+│   └── test_module.py
+│
+├── setup.py
+├── README.md
+└── requirements.txt
+
+2. Passo a Passo
+
+a) Criar o diretório principal do projeto
+
+Crie um diretório chamado my_package, que conterá todo o projeto.
+
+b) Criar o diretório do pacote
+
+Dentro do diretório my_package, crie um diretório também chamado my_package, que armazenará os módulos do seu pacote.
+
+c) Arquivo __init__.py
+
+Esse arquivo vazio no diretório my_package torna o diretório um pacote Python:
+touch my_package/__init__.py
+
+d) Criar um módulo Python
+
+No diretório my_package, crie um arquivo module.py com um exemplo simples de função:
+# my_package/module.py
+
+def hello_world():
+    return "Hello, World!"
+
+e) Criar a pasta de testes
+
+Crie um diretório chamado tests e dentro dele um arquivo test_module.py para testar a função criada:
+# tests/test_module.py
+from my_package.module import hello_world
+
+def test_hello_world():
+    assert hello_world() == "Hello, World!"
+
+f) Arquivo setup.py
+
+Esse é o arquivo principal para configurar seu pacote. Aqui está um exemplo básico:
+# setup.py
+from setuptools import setup, find_packages
+
+setup(
+    name="my_package",
+    version="0.1",
+    packages=find_packages(),
+    install_requires=[],  # Aqui você pode adicionar dependências, se houver
+    description="Um pacote simples para exemplo",
+    author="Seu Nome",
+    author_email="seuemail@example.com",
+    url="https://github.com/seuusuario/my_package",
+)
+
+g) Arquivo requirements.txt
+
+Aqui, você especifica as dependências do seu pacote (por enquanto vazio, mas pode ser preenchido se necessário).
+# requirements.txt
+
+h) Arquivo README.md
+
+Adicione um arquivo README.md com uma descrição básica do pacote:
+# My Package
+
+Este é um pacote simples de exemplo em Python.
+
+3. Gerar Distribuições
+
+Agora, com todos os arquivos prontos, gere as distribuições:
+python setup.py sdist bdist_wheel
+
+Isso criará as distribuições no diretório dist/.
+
+4. Testar Localmente
+
+Antes de publicar no PyPi, você pode testar a instalação local do pacote:
+pip install .
+
+5. Testar com o Pytest
+
+Para rodar os testes que criamos, instale o pytest e execute os testes:
+pip install pytest
+pytest tests/
+
+6. Publicar no PyPi
+
+Se você quiser publicar, siga os passos descritos no PDF, como criar contas no TestPyPi e PyPi e utilizar o Twine:
+python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*

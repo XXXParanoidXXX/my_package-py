@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: my-package
+Version: 0.1
+Summary: Um pacote simples para exemplo
+Home-page: https://github.com/XXXParanoidXXX/my_package-py.git
+Author: Paranoid
+Author-email: seuemail@example.com
